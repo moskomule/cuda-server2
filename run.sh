@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DEBUG_MODE=0
-IMAGE_BASE="moskomule/cuda-server2:"
+IMAGE_NAME_BASE="moskomule/cuda-server2:"
 help() {
     echo "$ $0 CONTAINER_NAME CUDA_VER -p PORT [-v VOLUME -g GPU]
 e.g., $ $0 $USER 101 -p 30022:22 -v /foo/bar:/foo/bar
@@ -25,7 +25,7 @@ else
     CONTAINER_NAME=$1
     case $2 in
         "90")
-            IMAGE_NAME="${IMAGE_NAME_BASE}90"
+            IMAGE_NAME="${IMAGE_NAME_BASE}92"
         ;;
         "101")
             IMAGE_NAME="${IMAGE_NAME_BASE}101"
@@ -82,7 +82,7 @@ fi
 
 echo "building..."
 
-if [[ ${DEBUG_MODE} ]];then
+if [[ ${DEBUG_MODE} == 1 ]];then
     
     echo "debug mode"
     echo "IMAGE_NAME=${IMAGE_NAME}"
@@ -94,8 +94,8 @@ if [[ ${DEBUG_MODE} ]];then
 else
     
     docker build \
-    --build-arg image_name=${IMAGE_NAME}:latest \
-    --build-arg user_name ${CONTAINER_NAME} -t  \
+    --build-arg image_name=${IMAGE_NAME} \
+    --build-arg user_name=${CONTAINER_NAME} -t  \
     "${CONTAINER_NAME}_image" .
     
     echo "launching..."

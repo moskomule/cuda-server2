@@ -1,4 +1,5 @@
 # cuda-server2
+![Docker Automated build](https://img.shields.io/docker/cloud/automated/moskomule/cuda-server2)
 
 Renewed cuda-server for my research. `cuda-server2` has the latest PyTorch, ipython etc., as well as conda environment and linuxbrew, by default.
 
