@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DEBUG_MODE=0
-IMAGE_BASE="moskomule/cuda-server2"
+IMAGE_BASE="moskomule/cuda-server2:"
 help() {
     echo "$ $0 CONTAINER_NAME CUDA_VER -p PORT [-v VOLUME -g GPU]
 e.g., $ $0 $USER 101 -p 30022:22 -v /foo/bar:/foo/bar
