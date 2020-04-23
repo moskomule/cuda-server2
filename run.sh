@@ -24,7 +24,7 @@ if [[ $1 == "" ]] || [[ $2 == "" ]]; then
 else
     CONTAINER_NAME=$1
     case $2 in
-        "90")
+        "92")
             IMAGE_NAME="${IMAGE_NAME_BASE}92"
         ;;
         "101")
