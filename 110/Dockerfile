@@ -2,6 +2,8 @@
 FROM nvidia/cuda:11.0-base-ubuntu20.04
 
 # installation
+# this env avoids timezone selection, which needs interaction
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update -qq \
     && apt install -y -qq \
     apt-utils \
