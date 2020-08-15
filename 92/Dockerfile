@@ -1,5 +1,5 @@
 # ubuntu-18.04
-FROM nvidia/cuda:9.2-cudnn7-devel
+FROM nvidia/cuda:9.2-runtime-ubuntu18.04
 
 # installation
 RUN apt update -qq \

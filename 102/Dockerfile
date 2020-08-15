@@ -1,5 +1,5 @@
 # ubuntu-18.04
-FROM nvidia/cuda:10.1-runtime-ubuntu18.04
+FROM nvidia/cuda:10.2-runtime-ubuntu18.04
 
 # installation
 RUN apt update -qq \
@@ -46,8 +46,8 @@ ENV LC_ALL en_US.UTF-8
 # nvtop
 # see https://github.com/Syllo/nvtop/issues/42
 RUN cd /tmp \
-    && ln -s /usr/local/cuda-10.1/targets/x86_64-linux/lib/stubs/libnvidia-ml.so /usr/local/lib/libnvidia-ml.so \
-    && ln -s /usr/local/cuda-10.1/targets/x86_64-linux/lib/stubs/libnvidia-ml.so /usr/local/lib/libnvidia-ml.so.1  \
+    && ln -s /usr/local/cuda-10.2/targets/x86_64-linux/lib/stubs/libnvidia-ml.so /usr/local/lib/libnvidia-ml.so \
+    && ln -s /usr/local/cuda-10.2/targets/x86_64-linux/lib/stubs/libnvidia-ml.so /usr/local/lib/libnvidia-ml.so.1  \
     && git clone https://github.com/Syllo/nvtop.git \
     && mkdir -p nvtop/build \
     && cd nvtop/build \

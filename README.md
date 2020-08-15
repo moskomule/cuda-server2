@@ -23,7 +23,7 @@ Check [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) page.
 where
 
 * `CONTAINER_NAME` is any name you like
-* `CUDA_VERSION` is currently 92 or 101
+* `CUDA_VERSION` is currently 92, 101 or 102
 * `USER_OPTIONS` includes
     - PORTS e.g., `-p 30022:22`. *Do not forget to specify at least one port for port 22*
     - VOLUMES e.g., `-v $HOME/Download:/home/user/Download`

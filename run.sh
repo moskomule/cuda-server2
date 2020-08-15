@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+# -e: exists if an error occurs
+# -u: disallows undefined variables
+set -ue
+
 DEBUG_MODE=0
 IMAGE_NAME_BASE="moskomule/cuda-server2:"
+
 help() {
     echo "$ $0 CONTAINER_NAME CUDA_VER -p PORT [-v VOLUME -g GPU]
 e.g., $ $0 $USER 101 -p 30022:22 -v /foo/bar:/foo/bar
@@ -18,24 +23,25 @@ if [[ $1 == "--debug" ]];then
     shift 1
 fi
 
-if [[ $1 == "" ]] || [[ $2 == "" ]]; then
-    help
-    exit 1
-else
-    CONTAINER_NAME=$1
-    case $2 in
-        "92")
-            IMAGE_NAME="${IMAGE_NAME_BASE}92"
-        ;;
-        "101")
-            IMAGE_NAME="${IMAGE_NAME_BASE}101"
-        ;;
-        *)
-            echo "no such cuda version $2"
-            exit 1
-        ;;
-    esac
-fi
+# check if $1 and $2 are defined
+: $1 $2
+
+CONTAINER_NAME=$1
+case $2 in
+    "92")
+        IMAGE_NAME="${IMAGE_NAME_BASE}92"
+    ;;
+    "101")
+        IMAGE_NAME="${IMAGE_NAME_BASE}101"
+    ;;
+    "102")
+        IMAGE_NAME="${IMAGE_NAME_BASE}102"
+    ;;
+    *)
+        echo "no such cuda version $2"
+        exit 1
+    ;;
+esac
 
 # remove processed args
 shift 2
