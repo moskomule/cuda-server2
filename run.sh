@@ -38,8 +38,10 @@ case $2 in
         IMAGE_NAME="${IMAGE_NAME_BASE}102"
     ;;
     "110")
-        echo "CUDA11 is not yet supported by PyTorch"
         IMAGE_NAME="${IMAGE_NAME_BASE}110"
+    ;;
+    "light")
+        IMAGE_NAME="${IMAGE_NAME_BASE}light"
     ;;
     *)
         echo "no such cuda version $2"
